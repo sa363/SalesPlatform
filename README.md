@@ -1,1 +1,1 @@
-# SalesPlatform
+# Docker container SalesPlatform
