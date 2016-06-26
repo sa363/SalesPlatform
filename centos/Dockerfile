@@ -9,9 +9,11 @@ rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;\
-yum -y update && yum -y install httpd php php-mysql && yum clean all;\
-systemctl enable httpd && systemctl start httpd;\
+yum -y update && yum -y install httpd php php-mysql php-pear php-devel gcc make mariadb mariadb-server && yum clean all;\
+pecl install timezonedb;\
+systemctl enable httpd.service;\
+systemctl enable mariadb.service;\
 echo "root:pfhgkfnf" | chpasswd;
-VOLUME [ "/sys/fs/cgroup", "/tmp", "/run" ]
+#VOLUME [ "/sys/fs/cgroup", "/tmp", "/run" ]
 EXPOSE 80
 CMD ["/usr/sbin/init"]
