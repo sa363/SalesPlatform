@@ -1,0 +1,11 @@
+[mysqld]
+collation_server=utf8_general_ci
+character_set_server=utf8
+#default-character-set=utf8
+init_connect='SET collation_connection = utf8_general_ci'
+init_connect='SET NAMES utf8'
+innodb_file_per_table=1
+innodb_data_file_path=ibdata1:10M:autoextend:max:512M
+
+[mysql]
+default-character-set = utf8
