@@ -1,6 +1,7 @@
 FROM centos:7
 MAINTAINER "Sergey Anisimov" <sa@uniz.ru>
 ENV container=docker
+ENV SALESPLATFORM_VERION=6.4.0-201512
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
@@ -20,11 +21,12 @@ echo "root:pfhgkfnf" | chpasswd;
 RUN sed -i.bak s/en_US/ru_RU/g /etc/locale.conf;
 #RUN  /usr/bin/localectl set-locale LANG=ru_RU.UTF-8;
 
-#ADD http://heanet.dl.sourceforge.net/project/salesplatform/salesplatform-vtigercrm-6.4.0-201512.tar.gz /var/src/salesplatform-vtigercrm-6.4.0-201512.tar.gz
-ADD files/salesplatform-vtigercrm-6.4.0-201512.tar.gz /var/www/html
+ADD http://heanet.dl.sourceforge.net/project/salesplatform/salesplatform-vtigercrm-${SALESPLATFORM_VERION}.tar.gz /var/www/html
+#ADD files/salesplatform-vtigercrm-6.4.0-201512.tar.gz /var/www/html
 ADD files/salesplatform.ini /etc/php.d/salesplatform.ini
 ADD files/mysqld.cnf /etc/my.cnf.d/mysqld.cnf
 ADD files/createdb.sql /tmp/.
+RUN tar xzvf /var/www/html/salesplatform-vtigercrm-6.4.0-201512.tar.gz -C /var/www/html;
 RUN chown -R apache:apache /var/www/html;
 
 #VOLUME [ "/sys/fs/cgroup", "/tmp", "/run" ]
