@@ -15,7 +15,6 @@ localedef  -i ru_RU -f UTF-8 ru_RU.UTF-8;\
 yum -y update && yum -y install epel-release && yum -y install httpd php php-mysql php-pear php-devel gcc make mariadb openssh-server php-mbstring php-imap && yum clean all;\
 pecl install timezonedb;\
 systemctl enable httpd.service;\
-systemctl enable mariadb.service;\
 systemctl enable sshd.service;\
 echo "root:pfhgkfnf" | chpasswd;
 #RUN  localedef  -i ru_RU -f UTF-8 ru_RU.UTF-8;
@@ -27,7 +26,7 @@ ADD http://heanet.dl.sourceforge.net/project/salesplatform/addons/salesplatform-
 #ADD files/salesplatform-vtigercrm-6.4.0-201512.tar.gz /var/www/html
 ADD files/salesplatform.ini /etc/php.d/salesplatform.ini
 
-ADD files/createdb.sql /tmp/.
+#ADD files/createdb.sql /tmp/.
 RUN tar xzvf /var/www/html/salesplatform-vtigercrm-6.4.0-201512.tar.gz -C /var/www/html;
 COPY files/kladrDB.config.inc /var/www/html/vtigercrm/modules/SPKladr/kladrDB.config.inc
 RUN chown -R apache:apache /var/www/html;
