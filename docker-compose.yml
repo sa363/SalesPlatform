@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: local/c7-mariadb
+    container_name: db
+    restart: always 
+    ports:
+      - "33306:3306"
+  
+  salesplatform:
+    image: local/c7-systemd
+    container_name: SalesPlatform
+    privileged: true
+    ports:
+      - "2225:22"
+      - "8080:80"
+    links:
+      - db:db
+    depends_on:
+      - db
+    restart: always
+    tty: true
