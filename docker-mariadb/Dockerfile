@@ -22,7 +22,7 @@ RUN ./fix-permissions.sh /var/lib/mysql/ && \
 
 COPY files/docker-entrypoint.sh /
 
-ADD files/mysqld.cnf /etc/my.cnf.d/mysqld.cnf
+COPY files/mysqld.cnf /etc/my.cnf.d/mysqld.cnf
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 

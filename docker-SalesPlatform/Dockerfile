@@ -28,7 +28,7 @@ ADD files/salesplatform.ini /etc/php.d/salesplatform.ini
 
 #ADD files/createdb.sql /tmp/.
 RUN tar xzvf /var/www/html/salesplatform-vtigercrm-6.4.0-201512.tar.gz -C /var/www/html;
-COPY files/kladrDB.config.inc /var/www/html/vtigercrm/modules/SPKladr/kladrDB.config.inc
+ADD files/kladrDB.config.inc /var/www/html/vtigercrm/modules/SPKladr/kladrDB.config.inc
 RUN chown -R apache:apache /var/www/html;
 
 #VOLUME [ "/sys/fs/cgroup", "/tmp", "/run" ]
