@@ -12,9 +12,9 @@ fi
 exec mysqld_safe
 
 if [ "$newdb" = true ] ; then
-    mysqladmin -u root create asterisk
-    mysqladmin -u root create asteriskcdrdb
-    mysql -u root -e "GRANT ALL PRIVILEGES ON asterisk.* TO $ASTERISKUSER@localhost IDENTIFIED BY '$ASTERISK_DB_PW';"
-    mysql -u root -e "GRANT ALL PRIVILEGES ON asteriskcdrdb.* TO $ASTERISKUSER@localhost IDENTIFIED BY '$ASTERISK_DB_PW';"
-    mysql -u root -e "flush privileges;"
+	mysqladmin -u root create asterisk
+	mysqladmin -u root create asteriskcdrdb
+	mysql -u root -e "GRANT ALL PRIVILEGES ON asterisk.* TO $ASTERISKUSER@localhost IDENTIFIED BY '$ASTERISK_DB_PW';"
+	mysql -u root -e "GRANT ALL PRIVILEGES ON asteriskcdrdb.* TO $ASTERISKUSER@localhost IDENTIFIED BY '$ASTERISK_DB_PW';"
+	mysql -u root -e "flush privileges;"
 fi

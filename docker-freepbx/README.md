@@ -1,6 +1,22 @@
-# docker-freepbx
-FreePBX Docker Image
+# FreePBX on Docker
 
-Forked from the jmar71n/freepbx image
+### Image includes
 
-Changes compared to the original image is upgrade of freepbx modules to latest versions and addition of preconfigured fail2ban config setup to detect asterisk intrusion attempts.
+ * phusion/baseimage (Ubuntu 14.04)
+ * LAMP stack (apache2, mysql, php)
+ * Asterisk 13
+ * FreePBX 13
+ 
+
+
+### Run your FreePBX image
+```bash
+docker run --net=host -d -t jmar71n/freepbx
+```
+
+Test it out by visiting your hosts ip address in a browser.
+
+### Fork ME
+
+Please feel free to fork or contribite to this image.
+[https://bitbucket.org/jmar71n/docker-freepbx/src/]
